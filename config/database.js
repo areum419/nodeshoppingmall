@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
     try {
         //try가 1순위
-        await mongoose.connect("")
+        await mongoose.connect(process.env.MONGO_URI)
         console.log("connect DB");
     }catch (err){
         // err를 상수화시킴

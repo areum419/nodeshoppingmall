@@ -4,10 +4,16 @@ import morgan from "morgan"; //미들웨어 설치
 import bodyParser from "body-parser"; // 브라우저 안에있는것들에 입력값들을body값 url은 파람스
 
 import connectDB from "./config/database.js";
+import dotEnv from "dotenv";
+
+
 import productRoute from "./routes/product.js";
 
 // order.js 관련해서 순서 3번(order.js)
 import orderRoute from "./routes/order.js";
+
+//dot 설정하는것
+dotEnv.config();
 
 // 상수 const
 const app = express();
@@ -37,9 +43,11 @@ app.get("/test", (req, res) => {
 
 
 // port
-const port = 8080; // localhost 8080으로 지정함
+// const port = 8080; // localhost 8080으로 지정함
+const port = process.env.PORT || 9090; // .env 설정때문에 옆 코드
 
-app.listen(port, console.log("server start"));
+
+app.listen(port, console.log(`server started at ${port}`));//${port} 변수추가
 
 
 // 코드 빌드순서.. js , java, phyton, rudy, ....

@@ -1,6 +1,13 @@
 import express from "express";
+import cors from "cors";
+import morgan, {format} from "morgan";
+
 // 상수 const
 const app = express();
+
+// 미들웨어 설정
+app.use(cors()) //외부에서 api 접근할때 허용해주는거임
+app.use(morgan("dev")) //결과에 대한 로그찍는거임 서버 보면 찍혀있음 (요청에 대한 로그임)
 
 // request respons test
 app.get("/test", (req, res) => {
@@ -8,11 +15,6 @@ app.get("/test", (req, res) => {
         msg :"test api"
     })
 }) // 요청하는 행위 자체 req, 요청받는 행위 res
-
-
-
-
-
 
 
 

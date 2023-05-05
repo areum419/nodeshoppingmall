@@ -13,8 +13,18 @@ router.get("/all", (req, res) => {
 
 // 2. product 생성하는 API
 router.post("/create", (req, res) => {
+    // 생성
+    // 사용자 입력값
+    const userInput = {
+        name : req.body.produtName,
+        price : req.body.produtPrice,
+        stock : req.body.productStock
+    }
+
+    // 아래는 내보내는것
     res.json({
-        msg : "create & product"
+        msg : "create & product",
+        product : userInput
     })
 })
 

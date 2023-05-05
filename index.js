@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors"; //미들웨어 설치
 import morgan from "morgan"; //미들웨어 설치
+import bodyParser from "body-parser"; // 브라우저 안에있는것들에 입력값들을body값 url은 파람스
 
 import productRoute from "./routes/product.js";
 
@@ -13,6 +14,8 @@ const app = express();
 // 미들웨어 설정
 app.use(cors()) //외부에서 api 접근할때 허용해주는거임
 app.use(morgan("dev")) //결과에 대한 로그찍는거임 서버 보면 찍혀있음 (요청에 대한 로그임)
+app.use(bodyParser.json()); //import 하고...이거 꼭 써줘야됨
+app.use(bodyParser.urlencoded({ extended : false})) // bodyparser는 두줄꼭 필수
 
 // routing
 app.use("/product", productRoute); //프로덕트로 요청이 들어오면 productRoute로 보내겠다
@@ -30,7 +33,7 @@ app.get("/test", (req, res) => {
 
 
 // port
-const port = 8080;
+const port = 8080; // localhost 8080으로 지정함
 
 app.listen(port, console.log("server start"));
 

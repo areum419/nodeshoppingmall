@@ -1,6 +1,8 @@
 import express from "express";
-import cors from "cors";
-import morgan, {format} from "morgan";
+import cors from "cors"; //미들웨어 설치
+import morgan, {format} from "morgan"; //미들웨어 설치
+
+import productRoute from "./routes/product.js";
 
 // 상수 const
 const app = express();
@@ -8,6 +10,11 @@ const app = express();
 // 미들웨어 설정
 app.use(cors()) //외부에서 api 접근할때 허용해주는거임
 app.use(morgan("dev")) //결과에 대한 로그찍는거임 서버 보면 찍혀있음 (요청에 대한 로그임)
+
+// routing
+app.use("/product", productRoute); //프로덕트로 요청이 들어오면 productRoute로 보내겠다
+
+
 
 // request respons test
 app.get("/test", (req, res) => {

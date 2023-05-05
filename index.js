@@ -2,6 +2,21 @@ import express from "express";
 // 상수 const
 const app = express();
 
+// request respons test
+app.get("/test", (req, res) => {
+    res.json({
+        msg :"test api"
+    })
+}) // 요청하는 행위 자체 req, 요청받는 행위 res
+
+
+
+
+
+
+
+
+
 // port
 const port = 8080;
 

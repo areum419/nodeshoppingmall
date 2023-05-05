@@ -1,8 +1,11 @@
 import express from "express";
 import cors from "cors"; //미들웨어 설치
-import morgan, {format} from "morgan"; //미들웨어 설치
+import morgan from "morgan"; //미들웨어 설치
 
 import productRoute from "./routes/product.js";
+
+// order.js 관련해서 순서 3번(order.js)
+import orderRoute from "./routes/order.js";
 
 // 상수 const
 const app = express();
@@ -13,7 +16,7 @@ app.use(morgan("dev")) //결과에 대한 로그찍는거임 서버 보면 찍�
 
 // routing
 app.use("/product", productRoute); //프로덕트로 요청이 들어오면 productRoute로 보내겠다
-
+app.use("/order", orderRoute); // order.js 관련해서 만듬 이게 만들어져야 위에 import됨
 
 
 // request respons test
@@ -30,6 +33,7 @@ app.get("/test", (req, res) => {
 const port = 8080;
 
 app.listen(port, console.log("server start"));
+
 
 // 코드 빌드순서.. js , java, phyton, rudy, ....
 // 1. 위에서 아래 방향으로 읽음

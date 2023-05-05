@@ -4,8 +4,6 @@ import express from "express";
 const router = express.Router();
 
 // product와 관련된 CRUD 를 생성할꺼임
-
-
 //1. product 전체 정보를 가져오는 API
 router.get("/all", (req, res) => {
     res.json({

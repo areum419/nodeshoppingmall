@@ -3,6 +3,7 @@ import cors from "cors"; //미들웨어 설치
 import morgan from "morgan"; //미들웨어 설치
 import bodyParser from "body-parser"; // 브라우저 안에있는것들에 입력값들을body값 url은 파람스
 
+import connectDB from "./config/database.js";
 import productRoute from "./routes/product.js";
 
 // order.js 관련해서 순서 3번(order.js)
@@ -10,6 +11,9 @@ import orderRoute from "./routes/order.js";
 
 // 상수 const
 const app = express();
+
+// DB 연결
+connectDB();
 
 // 미들웨어 설정
 app.use(cors()) //외부에서 api 접근할때 허용해주는거임

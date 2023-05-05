@@ -12,9 +12,19 @@ router.get("/", (req, res) => {
 })
 
 router.post("/create", (req, res) => {
+
+    // 생성
+    // 주문 입력값
+    const orderInput = {
+        product : req.body.orderProduct,
+        qty : req.body.orderQty
+    } // key 값
+
+
     res.json({
-        msg : "create & order"
-    })
+        msg : "create & order",
+        order : orderInput
+    }) // order : orderInput 지정해야 출력됨
 })
 
 router.put("/update", (req, res) => {
